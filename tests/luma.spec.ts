@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { HomePage } from "../pages/home.page";
 
 test("app loads", async ({ page }) => {
-    await page.goto("https://magento.softwaretestingboard.com/");
+    const homePage = new HomePage(page);
+    await page.goto(homePage.url);
 
-    const logoImage = page.locator(".logo");
-
-    await expect(logoImage).toBeVisible();
+    await expect(homePage.logoImage).toBeVisible();
 });
